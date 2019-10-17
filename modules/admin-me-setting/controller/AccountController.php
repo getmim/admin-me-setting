@@ -45,7 +45,18 @@ class AccountController extends \AdminMeSetting\Controller
 
         $new_password = $this->user->hashPassword($valid->{'new-password'});
 
-        Fetcher::set(['password'=>$new_password], ['id'=>$this->user->id]);
+        $user_set = ['password'=>$new_password];
+        Fetcher::set($user_set, ['id'=>$this->user->id]);
+
+        $this->addLog([
+            'user'   => $this->user->id,
+            'object' => $this->user->id,
+            'parent' => 0,
+            'method' => 2,
+            'type'   => 'user',
+            'original' => (object)['password'=>$this->user->password],
+            'changes'  => (object)$user_set
+        ]);
 
         $params['success'] = true;
         return $this->resp('me/setting/password', $params);
@@ -78,6 +89,20 @@ class AccountController extends \AdminMeSetting\Controller
 
         if(!Fetcher::set((array)$valid, ['id'=>$this->user->id]))
             return $this->show500();
+
+        $oobj = (object)[];
+        foreach($valid as $key => $val)
+            $oobj->$key = $this->user->$key;
+        
+        $this->addLog([
+            'user'   => $this->user->id,
+            'object' => $this->user->id,
+            'parent' => 0,
+            'method' => 2,
+            'type'   => 'user',
+            'original' => $oobj,
+            'changes'  => $valid
+        ]);
 
         $params['success'] = true;
         return $this->resp('me/setting/profile', $params);
