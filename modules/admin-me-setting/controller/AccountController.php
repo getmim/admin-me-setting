@@ -88,7 +88,7 @@ class AccountController extends \AdminMeSetting\Controller
             return $this->resp('me/setting/profile', $params);
 
         if(!Fetcher::set((array)$valid, ['id'=>$this->user->id]))
-            return $this->show500();
+            return $this->show500((object)['text'=>Fetcher::lastError()]);
 
         $oobj = (object)[];
         foreach($valid as $key => $val)
