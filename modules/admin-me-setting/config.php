@@ -2,7 +2,7 @@
 
 return [
     '__name' => 'admin-me-setting',
-    '__version' => '0.0.2',
+    '__version' => '0.0.3',
     '__git' => 'git@github.com:getmim/admin-me-setting.git',
     '__license' => 'MIT',
     '__author' => [
@@ -102,7 +102,7 @@ return [
                         'empty' => FALSE,
                         'text' => 'alnumdash',
                         'unique' => [
-                            'model' => 'LibUserMain\\Model\\User',
+                            'model' => 'LibUser\\Library\\Fetcher',
                             'field' => 'name',
                             'self' => [
                                 'service' => 'user.id',
