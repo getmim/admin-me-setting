@@ -17,12 +17,12 @@ class Menu
             (object)[
                 'label' => 'Profile',
                 'route' => ['adminMeSetting', [], []],
-                'index' => 0
+                'index' => 1000
             ],
             (object)[
                 'label' => 'Password',
                 'route' => ['adminMePassword', [], []],
-                'index' => 1
+                'index' => 2000
             ]
         ];
     }

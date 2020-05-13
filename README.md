@@ -36,7 +36,7 @@ return [
 Class tersebut harus mengimplementasikan interface `AdminMeSetting\Iface\Menus`. Dan harus memiliki method
 sebagai berikut:
 
-### getMenus(): array
+### static function getMenus(): array
 
 Fungsi untuk mengambil daftar link untuk ditampilkan dibagian kiri editor. Fungsi ini diharapkan mengembalikan
 array sebagai berikut:
@@ -51,3 +51,5 @@ $result = [
     // ...
 ];
 ```
+
+Nilai index yang sudah digunakan adalah 1000 untuk Profile, dan 2000 untuk Password.
