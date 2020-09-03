@@ -25,7 +25,7 @@ class Navbar
                 'label'     => 'Setting',
                 'icon'      => '<i class="fas fa-cog"></i>',
                 'link'      => \Mim::$app->router->to('adminMeSetting'),
-                'priority'  => 12
+                'priority'  => 50
             ]
         ];
 
